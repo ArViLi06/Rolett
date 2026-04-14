@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Random Role Spinner & Coach Picker | Rolet {% endblock %}
+
+{% block content %}
+    <div class="navbar">
+        <span class="logo-items">
+            <img src="{{ url_for('static', filename='images/roam.png') }}" class="logo">
+            <span>
+                <div class="logo-name">Rolett</div>
+                <div class="logo-description">Role & Coach Gacha System</div>
+            </span>
+        </span>
+    </div>
+    <div class="gacha-container">
+        <div class="intro">Feelin' lucky? Try spinning your role now! Good luck!</div>
+        <img src="{{ url_for('static', filename='images/jungle.png') }}" class="role-icons">
+        <span>
+            <input type="text" name="player" placeholder="Enter player name" class="player-input">
+            <button id="spin-btn" class="roll-btn">Roll</button>
+        </span>
+    </div>
+{% endblock %}

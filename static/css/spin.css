@@ -1,0 +1,85 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(purple 0%, darkblue 100%);
+    color: white;
+    height: 100vh;
+    margin: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo-items {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+}
+
+.logo-name {
+    /* font-family: 'Roboto', sans-serif; */
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.logo-description {
+    font-size: 20px;
+}
+
+.intro {
+    margin-top: 50px;
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.gacha-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.role-icons {
+    height: 350px;
+    animation: upDown 2.0s ease-in-out infinite alternate;
+}
+
+.player-input {
+    font-family: 'Montserrat', sans-serif;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    height: 30px;
+    border: none;
+}
+
+.roll-btn {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@keyframes upDown {
+    0% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
+    0% {
+        transform: translateY(10px);
+    }
+}
