@@ -14,10 +14,10 @@
     </div>
     <div class="gacha-container">
         <div class="intro">Feelin' lucky? Try spinning your role now! Good luck!</div>
-        <img src="{{ url_for('static', filename='images/jungle.png') }}" class="role-icons">
+        <img src="{{ url_for('static', filename='images/' ~ image ~ '.png') }}" class="role-icons">
         <span>
             <input type="text" name="player" placeholder="Enter player name" class="player-input">
-            <button id="spin-btn" class="roll-btn">Roll</button>
+            <button class="roll-btn">Roll</button>
         </span>
     </div>
 {% endblock %}

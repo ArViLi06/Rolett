@@ -8,6 +8,9 @@ const roles = [
 
 // Function to prevent double images in a row
 let lastIndex = -1;
+let currentTimeout = null;
+let speed = 300; // Initial speed of the animation
+let isStopping = false;
 
 function changeImage() {
     let randomIndex;
@@ -15,24 +18,56 @@ function changeImage() {
         randomIndex = Math.floor(Math.random() * roles.length);
     } while (randomIndex === lastIndex);
     lastIndex = randomIndex;
-    
-    setTimeout(() => {
-        $('.role-icons').attr('src', roles[randomIndex]);
-    });
+    $('.role-icons').attr('src', roles[randomIndex]);
 }
 
-changeImage(); // Initial call to set the first image and directly loop the animation
+function animationLoop() {
+    changeImage();
 
-setInterval(changeImage, 300); //Change image every 300ms
-
-$('.player-input').on('input', function() {
-    if ($(this).val().length > 0) {
-        $('.roll-btn').prop('disabled', false);
-    } else {
-        $('.roll-btn').prop('disabled', true);
+    if(isStopping) {
+        speed += 100; // Increase the delay to slow down the animation
+        if(speed >= 1000) { // Stop the animation after it has slowed down enough
+            stopAnimation();
+            return;
+        }
     }
+    currentTimeout = setTimeout(animationLoop, speed);
+}
+
+animationLoop(); // Start the animation loop
+
+function validateInput() {
+    const playerName = $('.player-input').val().trim();
+    if(playerName === '') {
+        alert('Please enter a player name before spinning!');
+        return false;
+    }
+    return true;
+}
+
+$(document).ready(function() {
+    $('.roll-btn').on('click', function() {
+        let btn = $(this);
+        if(!validateInput()) {
+            return;
+        }
+        
+        if(!isStopping && speed === 300) {
+            // ROLL: Accelerate the animation
+            speed = 100;
+            btn.text('Stop').css('background-color', 'red');
+        } else if(btn.text() === 'Stop') {
+            // STOP: Start slowing down the animation
+            isStopping = true;
+            btn.prop('disabled', true); // Disable the button
+            btn.text('Roll').css('background-color', 'gray');
+        }
+    });
 });
 
-$('.roll-btn').on('click', function() {
-    setInterval(changeImage, 100); //Start changing-images animation every 100ms on button click
-});
+function stopAnimation() {
+    clearTimeout(currentTimeout); // Stop the animation loop
+    isStopping = false;
+    speed = 300; // Reset speed for the next spin
+    animationLoop(); // Restart the animation loop to reset the state
+}
