@@ -81,6 +81,17 @@ body {
     border-radius: 10px;
 }
 
+.winner-popup {
+    border: 3px solid white;
+    background-color: black;
+    color: white;
+    width: 25vw;
+}
+
+/* .winner-title, .winner-text {
+    color: black;
+} */
+
 .winner-info {
     display: flex;
     flex-direction: column;
@@ -89,7 +100,20 @@ body {
 }
 
 .chosen-role {
+    width: 19vw;
+}
+
+.winner-btn {
+    background-color: yellow;
+    color: black;
+    font-weight: bold;
     width: 20vw;
+}
+
+.winner-btn:hover {
+    border: 0.5px solid white;
+    background: linear-gradient(darkblue 0%, purple 100%);
+    color: white;
 }
 
 @keyframes upDown {

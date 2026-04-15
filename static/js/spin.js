@@ -87,12 +87,19 @@ function showWinner(role, player) {
         title: 'Wow!',
         html: `
             <div class="winner-info">
-                <p>${player}'s assigned role:</p>
+                <p class="winner-text"><strong>${player}</strong>'s assigned role:</p>
                 <img src="${role}" class="chosen-role">
                 <strong>${roleName}</strong>
             </div>
         `,
-        confirmButtonText: 'OK'
+        confirmButtonText: 'Nice!',
+        customClass: {
+            popup: 'winner-popup',
+            title: 'winner-title',
+            confirmButton: 'winner-btn'
+        },
+        allowOutsideClick: false,
+        allowEscapeKey: false
     });
     animationLoop(); // Restart the animation loop for the next spin
 }
