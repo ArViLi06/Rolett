@@ -2,7 +2,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     background: linear-gradient(purple 0%, darkblue 100%);
     color: white;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
 }
 
@@ -70,6 +70,26 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.swal2-popup {
+    border-radius: 30px;
+}
+
+.swal2-confirm{
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 10px;
+}
+
+.winner-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.chosen-role {
+    width: 20vw;
 }
 
 @keyframes upDown {

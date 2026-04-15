@@ -36,10 +36,16 @@ function animationLoop() {
 
 animationLoop(); // Start the animation loop
 
+
 function validateInput() {
     const playerName = $('.player-input').val().trim();
     if(playerName === '') {
-        alert('Please enter a player name before spinning!');
+        Swal.fire({
+            icon: 'warning',
+            title: 'Player Name Required',
+            text: "Please enter player's name before rolling.",
+            confirmButtonText: 'Copy That'
+        });
         return false;
     }
     return true;
@@ -51,10 +57,10 @@ $(document).ready(function() {
         if(!validateInput()) {
             return;
         }
-        
+
         if(!isStopping && speed === 300) {
             // ROLL: Accelerate the animation
-            speed = 100;
+            speed = 10;
             btn.text('Stop').css('background-color', 'red');
         } else if(btn.text() === 'Stop') {
             // STOP: Start slowing down the animation
@@ -69,5 +75,24 @@ function stopAnimation() {
     clearTimeout(currentTimeout); // Stop the animation loop
     isStopping = false;
     speed = 300; // Reset speed for the next spin
-    animationLoop(); // Restart the animation loop to reset the state
+
+    const chosenRole = $('.role-icons').attr('src'); // Get the currently displayed role
+    const playerName = $('.player-input').val(); // Get the player's name
+    showWinner(chosenRole, playerName); // Show the winner after stopping
+}
+
+function showWinner(role, player) {
+    const roleName = role.split('/').pop().split('.')[0].toUpperCase(); // Extract role name from the image path
+    Swal.fire({
+        title: 'Wow!',
+        html: `
+            <div class="winner-info">
+                <p>${player}'s assigned role:</p>
+                <img src="${role}" class="chosen-role">
+                <strong>${roleName}</strong>
+            </div>
+        `,
+        confirmButtonText: 'OK'
+    });
+    animationLoop(); // Restart the animation loop for the next spin
 }
