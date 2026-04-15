@@ -22,7 +22,6 @@ function changeImage() {
 }
 
 function animationLoop() {
-    $('.roll-btn').prop('disabled', false).css('background-color', 'green').text('Roll'); // Enable the button at the start of the loop
     changeImage();
 
     if(isStopping) {
@@ -52,7 +51,7 @@ function validateInput() {
     return true;
 }
 
-$(document).ready(function() {
+function clickRoll() {
     $('.roll-btn').on('click', function() {
         let btn = $(this);
         if(!validateInput()) {
@@ -68,6 +67,16 @@ $(document).ready(function() {
             isStopping = true;
             btn.prop('disabled', true); // Disable the button
             btn.text('Stop').css('background-color', 'gray');
+        }
+    });
+}
+
+$(document).ready(function() {
+    clickRoll();
+
+    $('.player-input').on('keypress', function(e) {
+        if(e.key === 'Enter') {
+            $('.roll-btn').click();
         }
     });
 });
@@ -102,6 +111,8 @@ function showWinner(role, player) {
         allowOutsideClick: false,
         allowEscapeKey: false
     }).then(() => {
+        $('.player-input').val(''); // Clear the input field for the next player
+        $('.roll-btn').text('Roll').css('background-color', 'green').prop('disabled', false); // Reset the button
         animationLoop(); // Restart the animation loop for the next spin
     });
 }
