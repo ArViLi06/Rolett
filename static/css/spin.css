@@ -49,7 +49,7 @@ body {
 }
 
 .role-icons {
-    height: 350px;
+    height: 45vh;
     animation: upDown 2.0s ease-in-out infinite alternate;
 }
 
@@ -57,19 +57,23 @@ body {
     font-family: 'Montserrat', sans-serif;
     padding: 10px;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 10px;
     height: 30px;
     border: none;
+    text-align: center;
 }
 
 .roll-btn {
-    padding: 15px 30px;
+    font-family: 'Montserrat', sans-serif;
+    padding: 15px 0;
     font-size: 18px;
-    background-color: #4CAF50;
+    background-color: green;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
+    min-width: 10vw;
+    font-weight: bold;
 }
 
 .swal2-popup {
@@ -94,13 +98,18 @@ body {
     align-items: center;
 }
 
+.winner-text {
+    font-size: 25px;
+}
+
 .chosen-role {
-    width: 19vw;
+    width: 20vw;
 }
 
 .chosen-role-name {
     font-weight: bold;
     font-size: 30px;
+    margin-top: 10px;
 }
 
 .winner-btn {
@@ -108,10 +117,10 @@ body {
     color: black;
     font-weight: bold;
     width: 20vw;
+    font-size: 30px;
 }
 
 .winner-btn:hover {
-    border: 0.5px solid white;
     background: linear-gradient(darkblue 0%, purple 100%);
     color: white;
 }
@@ -125,5 +134,14 @@ body {
     }
     0% {
         transform: translateY(10px);
+    }
+}
+
+@media(max-width: 600px) {
+    .winner-popup {
+        width: 75vw;
+    }
+    .chosen-role {
+        width: 50vw;
     }
 }
