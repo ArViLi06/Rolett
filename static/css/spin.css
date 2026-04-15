@@ -88,19 +88,19 @@ body {
     width: 25vw;
 }
 
-/* .winner-title, .winner-text {
-    color: black;
-} */
-
 .winner-info {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
 }
 
 .chosen-role {
     width: 19vw;
+}
+
+.chosen-role-name {
+    font-weight: bold;
+    font-size: 30px;
 }
 
 .winner-btn {

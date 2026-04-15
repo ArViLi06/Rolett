@@ -22,6 +22,7 @@ function changeImage() {
 }
 
 function animationLoop() {
+    $('.roll-btn').prop('disabled', false).css('background-color', 'green').text('Roll'); // Enable the button at the start of the loop
     changeImage();
 
     if(isStopping) {
@@ -66,7 +67,7 @@ $(document).ready(function() {
             // STOP: Start slowing down the animation
             isStopping = true;
             btn.prop('disabled', true); // Disable the button
-            btn.text('Roll').css('background-color', 'gray');
+            btn.text('Stop').css('background-color', 'gray');
         }
     });
 });
@@ -84,12 +85,12 @@ function stopAnimation() {
 function showWinner(role, player) {
     const roleName = role.split('/').pop().split('.')[0].toUpperCase(); // Extract role name from the image path
     Swal.fire({
-        title: 'Wow!',
+        title: `${player}`,
         html: `
             <div class="winner-info">
-                <p class="winner-text"><strong>${player}</strong>'s assigned role:</p>
+                <p class="winner-text">Heading to</p>
                 <img src="${role}" class="chosen-role">
-                <strong>${roleName}</strong>
+                <div class="chosen-role-name">${roleName}</div>
             </div>
         `,
         confirmButtonText: 'Nice!',
@@ -100,6 +101,7 @@ function showWinner(role, player) {
         },
         allowOutsideClick: false,
         allowEscapeKey: false
+    }).then(() => {
+        animationLoop(); // Restart the animation loop for the next spin
     });
-    animationLoop(); // Restart the animation loop for the next spin
 }
