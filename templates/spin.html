@@ -15,9 +15,7 @@
     <div class="gacha-container">
         <div class="intro">Roll Your Role!</div>
         <img src="{{ url_for('static', filename='images/' ~ image ~ '.png') }}" class="role-icons">
-        <span>
-            <input type="text" name="player" placeholder="Enter player name" class="player-input">
-            <button class="roll-btn">Roll</button>
-        </span>
+        <input type="text" name="player" placeholder="Enter player name" class="player-input">
+        <button class="roll-btn">Roll</button>
     </div>
 {% endblock %}
